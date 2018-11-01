@@ -24,3 +24,11 @@ before_script:
 script:
   - julia build_tarballs.jl
 
+deploy:
+  provider: releases
+  api_key: "8a8d0c1a854d865ea80ed0abd34a8d9acca6cd82"
+  file: products/*
+  skip_cleanup: true
+  on:
+    tags: true
+
