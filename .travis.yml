@@ -1,8 +1,8 @@
 language: julia
 os:
-  - linux
+- linux
 julia:
-  - 1.0
+- 1.0
 notifications:
   email: false
 git:
@@ -10,25 +10,20 @@ git:
 cache:
   timeout: 1000
   directories:
-    - downloads
+  - downloads
 env:
   global:
-    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
-    - BINARYBUILDER_AUTOMATIC_APPLE=false
+  - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+  - BINARYBUILDER_AUTOMATIC_APPLE=false
 sudo: required
-
-# Before anything else, get the latest versions of things
 before_script:
-  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
-
+- julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
 script:
-  - julia build_tarballs.jl
-
+- julia build_tarballs.jl
 deploy:
   provider: releases
-  api_key: "8a8d0c1a854d865ea80ed0abd34a8d9acca6cd82"
+  api_key:
+    secure: uJNmBarJGHng/UK2SR84lvVOM0BLLqMALO/P8e/JPz2XI4bOonL9u/noqRl03B0hXOHfzQeCQjR+6Im1usNbVnClixz6XWa6yqfQyVYp2vtWtBzHPHE3vNHolwZ0VOpms1k2wRZ8Na9+Efv3MjDWpuxbQIMLvpYx7bZ0NBRyJKUZZcOIzrcbPrtqrhCfPMHde2U9mebVwbxE2m3vDibUY+7BAeVhWo5fB6TZzBBxARosZr1efEb5z/jItVAlsx+o0IDcIn9PeWiQWA0LkBzoaT0Rn9CY3a9PspSBg2iK9qUd/ayKs85y9o4rEKOP+ct4qG4li6sMg5bqz5CNaGUR2/T+8IOx/SR3dLUQG4YxUYIp9xBHRgC9YPt8tQb7bTwmem3OOP9r0wLr9YVGptYIF90I4i13jfSMmJu6jn3F9hrVhgqCJdZo1NnAqTEpat+CHyYO43j/4Fh2Bvtu9bljWDmM6snLrMZChNsCxqS6bW2NYUvqM9Kl3cAOWIWicRflj35vNmDTXrMWSvCPgCK0NWl+YcIVGLrMKkdyPrxu7ZKtGfXdCLeYYluOV4qoNgB4kP+c/8n0yf9yM6YP4IF3ACxaaShHQW5I8hzmGnrRU8345U4x72iaNiKeAvMhz8hoGCMgGBBAfhBlzaAabhTLF9wiLng8WJT4vqAeEOYuQg8=
   file: products/*
-  skip_cleanup: true
   on:
-    tags: true
-
+    repo: JoshChristie/CutPursuitBuilder
