@@ -1,5 +1,7 @@
 # CutPursuit builder
 
+[![Build Status](https://travis-ci.com/JoshChristie/CutPursuitBuilder.svg?branch=master)](https://travis-ci.org/JoshChristie/CutPursuitBuilder)
+
 This repository builds binary artifacts for the CutPursuit project.
 This repository has a default .travis.yml file that can be used to build
 binary artifacts on Travis CI. You will however need to setup the release
