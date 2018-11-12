@@ -3,12 +3,12 @@
 using BinaryBuilder
 
 name = "CutPursuitBuilder"
-version = v"0.1.0"
+version = v"0.0.2"
 
 # Collection of sources required to build CutPursuit
 sources = [
     "https://github.com/FugroRoames/cut-pursuit.git" =>
-    "73b1fd6cc333c155b8ffbcff168ef2d6702864b9"
+    "f621b1a6850a195e145de2806e2c7fda09815641"
 ]
 
 # Bash recipe for building across all platforms

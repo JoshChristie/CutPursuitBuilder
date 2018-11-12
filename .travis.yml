@@ -40,7 +40,7 @@ jobs:
 before_script:
 - julia --color=yes -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
 script:
-- julia build_tarballs.jl $TARGET
+- julia --color=yes build_tarballs.jl $TARGET
 deploy:
   provider: releases
   api_key:
