@@ -17,20 +17,20 @@ env:
   - BINARYBUILDER_AUTOMATIC_APPLE=false
   # Our build takes too long for one job, so split targets across multiple jobs
   # triplets come from using BinaryBuilder; triplet.(supported_platforms())
-  matrix:
-    - TARGET=i686-linux-gnu
-    - TARGET=x86_64-linux-gnu
-    - TARGET=aarch64-linux-gnu
-    - TARGET=arm-linux-gnueabihf
-    - TARGET=powerpc64le-linux-gnu
-    - TARGET=i686-linux-musl
-    - TARGET=x86_64-linux-musl
-    - TARGET=aarch64-linux-musl
-    - TARGET=arm-linux-musleabihf
-    - TARGET=x86_64-apple-darwin14
-    - TARGET=x86_64-unknown-freebsd11.1
-    - TARGET=i686-w64-mingw32
-    - TARGET=x86_64-w64-mingw32
+  # matrix:
+  #   - TARGET=i686-linux-gnu
+  #   - TARGET=x86_64-linux-gnu
+  #   - TARGET=aarch64-linux-gnu
+  #   - TARGET=arm-linux-gnueabihf
+  #   - TARGET=powerpc64le-linux-gnu
+  #   - TARGET=i686-linux-musl
+  #   - TARGET=x86_64-linux-musl
+  #   - TARGET=aarch64-linux-musl
+  #   - TARGET=arm-linux-musleabihf
+  #   - TARGET=x86_64-apple-darwin14
+  #   - TARGET=x86_64-unknown-freebsd11.1
+  #   - TARGET=i686-w64-mingw32
+  #   - TARGET=x86_64-w64-mingw32
 sudo: required
 jobs:
   include:
@@ -40,7 +40,7 @@ jobs:
 before_script:
 - julia --color=yes -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
 script:
-- julia --color=yes build_tarballs.jl $TARGET
+- julia --color=yes build_tarballs.jl
 deploy:
   provider: releases
   api_key:

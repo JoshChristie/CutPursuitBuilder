@@ -34,7 +34,10 @@ cp libcpjl.so $prefix/lib
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = supported_platforms()
+# platforms = supported_platforms()
+platforms = [
+    Linux(:x86_64, libc=:glibc)
+]
 
 # The products that we will ensure are always built
 products(prefix) = [
