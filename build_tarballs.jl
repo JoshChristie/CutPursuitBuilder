@@ -3,7 +3,7 @@
 using BinaryBuilder
 
 name = "CutPursuitBuilder"
-version = v"0.0.2"
+version = v"0.0.3"
 
 # Collection of sources required to build CutPursuit
 sources = [
