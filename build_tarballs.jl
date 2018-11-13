@@ -8,11 +8,18 @@ version = v"0.0.3"
 # Collection of sources required to build CutPursuit
 sources = [
     "https://github.com/FugroRoames/cut-pursuit.git" =>
-    "f621b1a6850a195e145de2806e2c7fda09815641"
+    "f621b1a6850a195e145de2806e2c7fda09815641",
+    "https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2" =>
+    "7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7",
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
+cd $WORKSPACE/srcdir/boost_1_68_0/
+./bootstrap.sh --prefix=$prefix
+apk add python-dev
+./b2 -j$nproc --layout=system install
+
 cd $WORKSPACE/srcdir/cut-pursuit/src
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DJlCxx_DIR=../../../destdir/lib/cmake/JlCxx/ ..
@@ -48,7 +55,7 @@ products(prefix) = [
 dependencies = [
     "https://github.com/JuliaInterop/libcxxwrap-julia/releases/download/v0.5.1/build_libcxxwrap-julia-1.0.v0.5.1.jl",
     "https://github.com/JuliaPackaging/JuliaBuilder/releases/download/v1.0.0-2/build_Julia.v1.0.0.jl",
-    "https://github.com/twadleigh/BoostBuilder/releases/download/v1.68.0-4/build_Boost.v1.68.0.jl"
+    #"https://github.com/twadleigh/BoostBuilder/releases/download/v1.68.0-4/build_Boost.v1.68.0.jl"
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
